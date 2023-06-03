@@ -39,18 +39,17 @@ return {
       -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
       -- In this case a note with the title 'My new note' will given an ID that looks
       -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-      -- In order to get this back, check the repo for this plugin ~Miles
-      local name = ""
+      local suffix = ""
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
       else
-        -- If title is nil, just add 4 random uppercase letters to the name.
+        -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
-          name = name .. string.char(math.random(65, 90))
+          suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return name
+      return os.date("%Y%m%d") .. "-" .. suffix
     end,
 
     -- Optional, set to true if you don't want Obsidian to manage frontmatter.
