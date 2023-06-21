@@ -49,7 +49,7 @@ return {
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return os.date("%Y%m%d") .. "-" .. suffix
+      return os.date("%Y%m%d%H%M") .. "-" .. suffix
     end,
 
     -- Optional, set to true if you don't want Obsidian to manage frontmatter.
